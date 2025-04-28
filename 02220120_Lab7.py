@@ -2,7 +2,8 @@
 class Node:
     def __init__(self, value):
         self.value = value
-        self.left = self.right = None
+        self.left = None
+        self.right = None
 
 # BinaryTree class
 class BinaryTree:
@@ -46,8 +47,18 @@ class BinaryTree:
                 queue.append((node.left, 2 * idx + 1))
                 queue.append((node.right, 2 * idx + 2))
         return queue[-1][1] == len(queue) - 1
-# Demonstration
+
+# Main program
 if __name__ == "__main__":
+    # Step 1: Create an empty tree and display
+    empty_tree = BinaryTree()
+    print("Created new Binary Tree")
+    if empty_tree.root:
+        print(f"Root: {empty_tree.root.value}")
+    else:
+        print("Root: None")
+
+    # Step 2: Build a populated tree
     tree = BinaryTree(1)
     tree.root.left = Node(2)
     tree.root.right = Node(3)
@@ -56,6 +67,7 @@ if __name__ == "__main__":
     tree.root.right.left = Node(6)
     tree.root.right.right = Node(7)
 
+    # Step 3: Print information about the tree
     print("Tree Height:", tree.height())
     print("Total Nodes:", tree.size())
     print("Leaf Nodes Count:", tree.count_leaves())
